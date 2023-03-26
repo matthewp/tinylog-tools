@@ -1,0 +1,24 @@
+{
+  "name": "@matthewp/tinylog-tools",
+  "version": "0.1.0",
+  "description": "A suite of tools for working with the [Tinylogs format](https://codeberg.org/bacardi55/gemini-tinylog-rfc)",
+  "type": "module",
+  "exports": {
+    ".": "./lib/main.js"
+  },
+  "types": "./lib/main.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matthewp/tinylog-tools.git"
+  },
+  "keywords": [],
+  "author": "Matthew Phillips <matthew@matthewphillips.info>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/matthewp/tinylog-tools/issues"
+  },
+  "homepage": "https://github.com/matthewp/tinylog-tools#readme"
+}
