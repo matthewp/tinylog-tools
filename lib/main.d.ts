@@ -1,5 +1,4 @@
 type TinylogAsyncGenerator = AsyncGenerator<string, void, unknown>;
-type TinylogAsyncSource = () => TinylogAsyncGenerator;
 
 type Header = {
   title: string;

@@ -1,6 +1,6 @@
 import assert from 'node:assert';
 import { test } from 'node:test';
-import { TinylogReader, stringSource } from '../lib/main.js';
+import { TinylogReader, stringSource } from '../../lib/main.js';
 
 test('basics', async (t) => {
   let source = `# someperson on Station
@@ -49,5 +49,16 @@ More stuff`;
     assert.equal(all[1].body, `Gemini testing 2
 
 Another line`);
+  });
+
+  await t.test('posts iteration', async t => {
+    let reader = new TinylogReader({
+      source: stringSource(source)
+    });
+    let posts = [];
+    for await(let post of reader.posts()) {
+      posts.push(post);
+    }
+    assert.equal(posts.length, 3);
   });
 });
