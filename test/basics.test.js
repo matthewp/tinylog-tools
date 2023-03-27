@@ -14,20 +14,40 @@ Some text
 ## 2023-03-25 00:47 UTC
 Gemini testing 2
 
+Another line
+
 ## 2023-03-25 00:44 UTC
 More stuff`;
 
   let reader = new TinylogReader({
     source: stringSource(source)
   });
-  
-  let header = await reader.header();
 
-  console.log("HERE", header);
+  await t.test('header', async t => {
+    let header = await reader.header();
 
-  assert.equal(header.title, 'someperson on Station');
-  assert.equal(header.author, 'someperson');
-  assert.equal(header.avatar, '😊');
-  assert.equal(header.description, undefined);
-  assert.equal(header.license, undefined);
+    assert.equal(header.title, 'someperson on Station');
+    assert.equal(header.author, 'someperson');
+    assert.equal(header.avatar, '😊');
+    assert.equal(header.description, undefined);
+    assert.equal(header.license, undefined);
+  });
+
+  await t.test('posts', async t => {
+    let all = await reader.posts().all();
+
+    assert.equal(all.length, 3);
+
+    let date = all[0].date;
+    assert.equal(date.getFullYear(), 2023);
+    assert.equal(date.getMonth(), 2);
+    assert.equal(date.getDate(), 26);
+    assert.equal(date.getUTCHours(), 13);
+    assert.equal(date.getUTCMinutes(), 6);
+
+    assert.equal(all[0].body, 'Some text');
+    assert.equal(all[1].body, `Gemini testing 2
+
+Another line`);
+  });
 });
