@@ -1,5 +1,4 @@
 type TinylogAsyncGenerator = AsyncGenerator<string, void, unknown>;
-type TinylogAsyncSource = () => TinylogAsyncGenerator;
 
 type Header = {
   title: string;
@@ -10,7 +9,6 @@ type Header = {
 };
 
 type Post = {
-  title: string;
   date: Date | undefined;
   body: string;
 };
@@ -30,5 +28,8 @@ export function parseAsync(source: TinylogAsyncGenerator): AsyncGenerator<ParseR
 export class TinylogReader {
   constructor(options: { source: TinylogAsyncGenerator });
   header(): Promise<Header | undefined>;
-  posts(): AsyncGenerator<Post, void, unknown>;
+  posts(): AsyncGenerator<Post, void, unknown> & {
+    all(): Promise<Post[]>;
+  };
+  static fromString(source: string): TinylogReader;
 }

@@ -4,11 +4,18 @@
   "description": "A suite of tools for working with the [Tinylogs format](https://codeberg.org/bacardi55/gemini-tinylog-rfc)",
   "type": "module",
   "exports": {
-    ".": "./lib/main.js"
+    ".": {
+      "types": "./lib/main.d.ts",
+      "default": "./lib/main.js"
+    },
+    "./node": {
+      "types": "./lib/node.d.ts",
+      "default": "./lib/node.js"
+    }
   },
   "types": "./lib/main.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --test test/**/*.test.js"
   },
   "repository": {
     "type": "git",
