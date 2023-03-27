@@ -31,4 +31,5 @@ export class TinylogReader {
   posts(): AsyncGenerator<Post, void, unknown> & {
     all(): Promise<Post[]>;
   };
+  static fromString(source: string): TinylogReader;
 }
