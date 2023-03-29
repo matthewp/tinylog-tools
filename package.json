@@ -1,6 +1,6 @@
 {
   "name": "@matthewp/tinylog-tools",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A suite of tools for working with the [Tinylogs format](https://codeberg.org/bacardi55/gemini-tinylog-rfc)",
   "type": "module",
   "exports": {
